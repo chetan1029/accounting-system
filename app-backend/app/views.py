@@ -4,6 +4,10 @@ from django.db.models import F
 from rest_framework import generics
 from rest_framework import filters
 from django.db import transaction
+from django.http import JsonResponse
+
+def ping(request):
+    return JsonResponse({"result": "pong"})
 
 class AccountListView(generics.ListCreateAPIView):
     queryset = Account.objects.all()
