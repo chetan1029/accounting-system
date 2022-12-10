@@ -1,104 +1,72 @@
-# Transaction Management Fullstack - Level 3
+# Fullstack Boilerplate Django/React
 
-Your task is to build a fullstack app that allows to record financial transactions and view the transaction history.
+A backbone for your coding challenge.
 
-Please agree with your hiring team regarding the tech stack choice.
+## Contents
 
-The backend should implement the [Accounting API](https://infra.devskills.app/accounting/api/3.1.0).
+- [Backend service](app-backend) - a Django service with a `/ping` endpoint.
+- [Frontend app](app-frontend) - a React/NextJS app.
+- [E2E test suites](cypress/integration) - a backend and a frontend Cypress test suites. Extend with your tests.
+- [Pipeline](.github/workflows/tests.yml) - a test Runner that executes the Cypress tests on push to a branch other than `master`/`main`.
 
-The frontend should consist of a form for submitting transactions and a transaction list.
+## Tech Stack
 
-Transaction list displays the withdrawn or deposited amount for each transaction along with the affected account id. It also shows the current balance for the last submitted transaction.
+### Backend
 
-Here's the UI mockup with hints:
+- Django 3.1.5
 
-![Accounting App Frontend](https://user-images.githubusercontent.com/450319/139797772-4e4b2744-447c-411f-9b04-7028ba5e89a1.png)
+#### Additional libs
 
-Feel free to tweak the UI, but please ensure that the following HTML is in place.
+- sqlite3 (SQLite connection)
+- django-cors-headers (CORS support)
 
-#### The form for submitting transactions
+### Frontend
 
-```html
-<form ... >
-  <input data-type="account-id" ... />
-  <input data-type="amount" ... />
-  <input data-type="transaction-submit" type="submit" ... />
-</form>
-```
+- Next 10
+- React 17
 
-Both input **fields should be cleared** after the form is submitted.
+#### Additional libs
 
-#### Transaction list
+- tailwindcss 2 (css)
+- DOM/React Testing Library / Jest (testing)
 
-Every new transaction goes on **the top of the list** and should have an enclosing `<div />` with the following structure:
+### Misc
 
-```html
-<div 
-     data-type="transaction"
-     data-account-id="${transaction-account-id}"
-     data-amount="${transaction-amount}"
-     data-balance="${current-account-balance}" ...>
-  ...
-</div>
-```
+- Cypress
+- GitHub Actions
 
-- `${transaction-account-id}` - account id of the corresponding transaction.
-- `${transaction-amount}` - transaction amount.
-- `${current-account-balance}` - the current account balance right after submitting the transaction (only show for the last submitted transaction).
+## Getting started
 
-## Before you get started
+1. Make sure [`python3`](https://www.python.org/downloads/) and [`pip3`](https://pip.pypa.io/en/stable/installing/) are installed on your local env.
 
-### If you run into a problem
+2. Make sure npm & node are configured on your local env. You can download those distributions for your platform [here](https://nodejs.org/en/download/)
 
-Need help? Head over to [our community on GitHub](https://github.com/orgs/DevSkillsHQ/discussions/categories/help) to get assistance.
-
-### Import boilerplate
-
-Follow [this link](https://docs.devskills.co/collections/85-the-interview-process/articles/342-importing-challenge-boilerplate) to get the boilerplate code for your tech stack to configure a minimal setup for running the E2E tests.
-
-<details>
-<summary>Alternatively, use the manual setup.</summary>
-
-1. Update the `baseUrl` (where your frontend runs) in [cypress.json](cypress.json).
-2. Update the `apiUrl` (where your backend runs) in [cypress.json](cypress.json).
-3. Update the [`build`](package.json#L5) and [`start`](package.json#L6) scripts in [package.json](package.json) to respectively build and start your app.
-
-</details>
-
-### Get familiar with the API
-
-Follow [this link](https://infra.devskills.app/transaction-management/api/3.1.0) to find the API documentation. Feel free to try out a few requests to better understand how the API should work.
-
-### Try running the E2E tests locally
+3. Build your app.
 
 ```bash
 npm install
-npm run build # should build your fullstack app
-npm run start # should start your fullstack app
-npm run test
+npm run build # both Django backend and Next frontend
+npm run build:backend # only Django backend
+npm run build:frontend # only Next frontend
 ```
 
-## What we expect from you
+4. Start your app.
 
-1. Make the provided E2E tests pass.
-2. Keep server data in memory.
-3. Implement client-side validation of the form data.
-4. Ensure that the frontend app remains responsive while the data is being loaded from the server.
-5. Unit test one module of choice. There is no need to test the whole app, as we only want to understand what you take into consideration when writing unit tests.
-6. Avoid duplication and extract re-usable modules where it makes sense. We want to see your approach to creating a codebase that is easy to maintain.
-7. Push your code to the new `implementation` branch. We encourage you to commit and push your changes regularly as it's a good way for you to showcase your thinking process.
-8. Create a new pull request, but please **do not merge it**.
-9. Document the tech decisions you've made by creating a new review on your PR ([see how](https://www.loom.com/share/94ae305e7fbf45d592099ac9f40d4274)). In particular, describe how you've made the frontend responsive.
-10. Await further instructions from the hiring team.
+```bash
+npm install
+npm run start # both Django backend and Next frontend
+npm run start:backend # only Django backend
+npm run start:frontend # only Next frontend
+```
 
-## Time estimate
+5. Run the Cypress tests.
 
-About **3 hours** depending on your experience level + the time to set up the project/environment (go with one of the provided boilerplates to move faster).
-
-Also, there is no countdown. The estimate is for you to plan your time.
+```bash
+npm run test # run project tests under `cypress/integration`
+```
 
 ---
 
 Made by [DevSkills](https://devskills.co).
 
-How was your experience? **[Don't hesitate to give us a shout](https://github.com/orgs/DevSkillsHQ/discussions/categories/feedback)**.
+Did you find this repo useful? **Give us a shout on [Twitter](https://twitter.com/DevSkillsHQ) / [LinkedIn](https://www.linkedin.com/company/devskills)**.
