@@ -9,7 +9,7 @@ const Transactions = () => {
             <main className="w-full px-20">
                 <div className="grid mt-3 mb-5">
                     <h1 className="text-4xl font-bold text-center">
-                        Mentimeter Accounting System
+                        Transactions System
                     </h1>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-5 h-screen">
