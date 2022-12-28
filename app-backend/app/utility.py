@@ -1,4 +1,5 @@
 import math
+import decimal
 
 def elo_rating_cal(choice_win, choice_loss, choice_win_rating, choice_loss_rating, result, k=32):
     """
@@ -29,11 +30,11 @@ def elo_rating_cal(choice_win, choice_loss, choice_win_rating, choice_loss_ratin
     else:
         raise ValueError("Invalid result value. Must be 1, 0, or -1.")
     
-    new_rating1 = choice_win_rating + k * (score1 - expected_score1)
-    new_choice_loss_rating = choice_loss_rating + k * (score2 - expected_score2)
+    new_choice_win_rating = decimal.Decimal(choice_win_rating) + k * (decimal.Decimal(score1) - decimal.Decimal(expected_score1))
+    new_choice_loss_rating = decimal.Decimal(choice_loss_rating) + k * (decimal.Decimal(score2) - decimal.Decimal(expected_score2))
 
     ratings = {}
-    ratings["new_choice_win_rating"] = choice_win_rating
+    ratings["new_choice_win_rating"] = new_choice_win_rating
     ratings["new_choice_loss_rating"] = new_choice_loss_rating
     
     return ratings
