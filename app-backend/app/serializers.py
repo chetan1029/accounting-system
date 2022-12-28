@@ -20,6 +20,7 @@ class ChoiceSerializer(serializers.ModelSerializer):
         read_only_fields = ['category_id']
 
 class ResultSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Result
         fields = ["id", "choice_id", "guest_id", "elo_rating", "created_at"]
